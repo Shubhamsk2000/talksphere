@@ -40,7 +40,15 @@ export const signup = async (req, res) => {
             generateTokenAndSetCookie(newUser._id, res);
 
             await newUser.save();
-            return res.status(201).json({ message: "User registered successfully", newUser });
+            return res.status(201).json({
+                message: "User registered successfully",
+                user: {
+                    _id: newUser._id,
+                    fullName: newUser.fullName,
+                    username: newUser.username,
+                    profilePic: newUser.profilePic
+                }
+            });
         } else {
             res.send(400).json({ error: "Something went wrong!" });
         }
@@ -59,7 +67,15 @@ export const login = async (req, res) => {
             return res.status(400).json({ error: "Invalid username or password" });
         }
         generateTokenAndSetCookie(user._id, res);
-        res.status(200).json(user);
+        return res.status(201).json({
+            message: "User login successfully",
+            user: {
+                _id: user._id,
+                fullName: user.fullName,
+                username: user.username,
+                profilePic: user.profilePic
+            }
+        });
     } catch (error) {
         console.log("Error in LogIn: ", error.message);
         return res.status(500).json({ error: "Internal server error" });
