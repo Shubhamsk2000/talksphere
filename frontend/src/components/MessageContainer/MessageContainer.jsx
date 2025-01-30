@@ -36,7 +36,7 @@ const NoChatSelected = () => {
     <>
       <div className="flex items-center justify-center w-full h-full">
         <div className="flex flex-col items-center gap-2 px-4 font-semibold text-center sm:text-lg md:text-xl text-grey-200">
-          <p> Welcome Shubham Kondhalkar 👋👋 </p>
+          <p> Welcome {} 👋👋 </p>
 
         </div>
 
