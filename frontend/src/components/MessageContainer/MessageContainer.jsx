@@ -2,16 +2,17 @@ import { useEffect } from "react";
 import useConversation from "../../zustand/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
+import { useAuthContext } from "../../context/AuthContext";
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
-  useEffect(()=>{
-    
+  useEffect(() => {
+
     // return is executed when the component is unmounted
     return () => {
       setSelectedConversation(null);
     }
-  },[setSelectedConversation])
+  }, [setSelectedConversation])
   return (
     <div className='md:min-w-[450px] flex flex-col'>
       {
@@ -32,14 +33,16 @@ const MessageContainer = () => {
 };
 
 const NoChatSelected = () => {
+  const authuser = JSON.parse(localStorage.getItem("authUser"));
+
   return (
     <>
       <div className="flex items-center justify-center w-full h-full">
         <div className="flex flex-col items-center gap-2 px-4 font-semibold text-center sm:text-lg md:text-xl text-grey-200">
-          <p> Welcome {} 👋👋 </p>
+
+          <p> Welcome {authuser.fullName} 👋👋 </p>
 
         </div>
-
       </div>
     </>
   )
