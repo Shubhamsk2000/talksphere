@@ -4,7 +4,7 @@ import http from 'http';
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(Server);
+const io = new Server(server);
 
 const userSocketMap = {};
 
