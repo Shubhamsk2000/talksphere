@@ -4,12 +4,7 @@ import http from 'http';
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
-    cors: {
-        origin: ["https://talksphere-3pyz.onrender.com/"],
-        methods: ["GET", "POST"]
-    }
-});
+const io = new Server(Server);
 
 const userSocketMap = {};
 
